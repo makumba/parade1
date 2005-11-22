@@ -16,6 +16,8 @@
     <property name="mappingResources">
             <list>
                 <value>Parade.hbm.xml</value>
+                <value>Row.hbm.xml</value>
+                
             </list>
         </property>
     
@@ -27,7 +29,7 @@
         <property name="sessionFactory"><ref local="sessionFactory"/></property>
     </bean>
 
-    <bean id="myRecordDAO" class="org.makumba.parade.Parade">
+    <bean id="RootDAO" class="org.makumba.parade.RootSpring">
         <property name="sessionFactory"><ref local="sessionFactory"/></property>
     </bean>
 </beans>

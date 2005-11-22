@@ -94,6 +94,7 @@ public class Root {
             cfg.addResource("../conf/ManagerDataHierarchy.hbm.xml");
             cfg.addResource("../conf/File.hbm.xml");
             cfg.addResource("../conf/FileHierarchy.hbm.xml");
+            cfg.addResource("../conf/FileDataHierarchy.hbm.xml");
             
             
             

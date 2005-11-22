@@ -16,21 +16,6 @@
         <generator class="native"/>
     </id>
     </class>
-    
-    
-    <!--
-    <joined-subclass name="FileData" table="FILEMANAGER">
-        <key column="MANAGERDATA_ID"/>
-
-    </joined-subclass>
-    
-    <joined-subclass name="DirectoryData" table="DIRECTORYMANAGER">
-        <key column="MANAGERDATA_ID"/>
-        
-    </joined-subclass>
-    
-    -->
-        		
 		
 </hibernate-mapping>
 

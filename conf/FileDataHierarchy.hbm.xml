@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+      "-//Hibernate/Hibernate Mapping DTD//EN"
+      "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+	package="org.makumba.parade">
+	
+	<class name="FileSystemManager" table="FILESYSTEMMGR">
+    <id name="id" type="long" column="FILESYSTEMMGR_ID">
+        <generator class="native"/>
+    </id>
+    </class>
+    
+    <class name="CvsManager" table="CVSMGR">
+    <id name="id" type="long" column="CVSMGR_ID">
+        <generator class="native"/>
+    </id>
+    </class>
+    
+    <class name="TrackerManager" table="TRACKERMGR">
+    <id name="id" type="long" column="TRACKERMGR_ID">
+        <generator class="native"/>
+    </id>
+    </class>
+     		
+		
+</hibernate-mapping>
+
+ 

@@ -1,7 +1,7 @@
 package org.makumba.parade;
 
-public class ManagerData {
-	
+public class MakumbaManager {
+
 	public Long id;
 
 	public Long getId() {
@@ -12,8 +12,5 @@ public class ManagerData {
 		this.id = id;
 	}
 	
-	public void display() {
-		// some general code about how to display info...
-	}
-
+	
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+      "-//Hibernate/Hibernate Mapping DTD//EN"
+      "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+	package="org.makumba.parade">
+	
+	<class name="FileData" table="FILE">
+    <id name="id" type="long" column="FILE_ID">
+        <generator class="native"/>
+    </id>
+    </class>
+    
+    <class name="DirectoryData" table="DIRECTORY">
+    <id name="id" type="long" column="DIRECTORY_ID">
+        <generator class="native"/>
+    </id>
+    </class>
+    
+    
+    <!--
+    <joined-subclass name="FileData" table="FILEMANAGER">
+        <key column="MANAGERDATA_ID"/>
+
+    </joined-subclass>
+    
+    <joined-subclass name="DirectoryData" table="DIRECTORYMANAGER">
+        <key column="MANAGERDATA_ID"/>
+        
+    </joined-subclass>
+    
+    -->
+        		
+		
+</hibernate-mapping>
+
+ 

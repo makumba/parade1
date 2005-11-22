@@ -1,6 +1,6 @@
 package org.makumba.parade;
 
-public class ManagerData {
+public class File {
 	
 	public Long id;
 
@@ -10,10 +10,6 @@ public class ManagerData {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-	
-	public void display() {
-		// some general code about how to display info...
 	}
 
 }

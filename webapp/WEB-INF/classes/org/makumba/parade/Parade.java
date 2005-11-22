@@ -6,7 +6,7 @@ import java.util.Map;
 public class Parade {
 	
 	private Map rows = new HashMap();
-	
+			
 	public Long id;
 
 	public Long getId() {
@@ -28,5 +28,7 @@ public class Parade {
 	public void setRows(Map rows) {
 		this.rows = rows;
 	}
+
+	
 
 }

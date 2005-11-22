@@ -1,6 +1,6 @@
 package org.makumba.parade;
 
-public class ManagerData {
+public class CvsManager extends FileData {
 	
 	public Long id;
 
@@ -12,8 +12,5 @@ public class ManagerData {
 		this.id = id;
 	}
 	
-	public void display() {
-		// some general code about how to display info...
-	}
 
 }

@@ -22,15 +22,14 @@ public class InitServlet extends HttpServlet {
             System.out.println("INFO: Launching ParaDe...");
         	super.init();
             
-        	/* Spring version
         	 
-        	 try {
+        	/*
+        	try {
         		RootSpring root = new RootSpring();
         		root.init();
         	} catch(Throwable t) {
             	logger.error(t); t.printStackTrace();
             }
-        	 
         	 */
         	
         	try {

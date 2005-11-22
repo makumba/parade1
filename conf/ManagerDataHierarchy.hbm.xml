@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+      "-//Hibernate/Hibernate Mapping DTD//EN"
+      "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+	package="org.makumba.parade">
+	
+	<class name="CvsManagerData" table="CVSMGRDATA">
+    <id name="id" type="long" column="CVSDATA_ID">
+        <generator class="native"/>
+    </id>
+    </class>
+    
+    <class name="FileManagerData" table="FILEMGRDATA">
+    <id name="id" type="long" column="FILEMGRDATA_ID">
+        <generator class="native"/>
+    </id>
+    </class>
+    
+    <class name="MakumbaManagerData" table="MAKUMBAMGRDATA">
+    <id name="id" type="long" column="MAKUMBAMGRDATA_ID">
+        <generator class="native"/>
+    </id>
+    </class>
+    
+    <class name="RowStoreManagerData" table="ROWSTOREMGRDATA">
+    <id name="id" type="long" column="ROWSTOREMGRDATA_ID">
+        <generator class="native"/>
+    </id>
+    </class>
+    
+    <class name="WebAppManagerData" table="WEBAPPMGRDATA">
+    <id name="id" type="long" column="WEBAPPMGRDATA_ID">
+        <generator class="native"/>
+    </id>
+    </class>
+		
+</hibernate-mapping>
+
+ 

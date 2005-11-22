@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 
 import org.makumba.parade.tools.ForeignHttpAuthorizer;
 
-public class TomcatManager implements ServletContainer {
+public class TomcatManager extends ManagerData implements ServletContainer {
     String managerURL;
 
     String user, pass;

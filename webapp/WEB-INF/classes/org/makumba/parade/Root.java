@@ -90,6 +90,14 @@ public class Root {
             cfg = new Configuration().configure("../conf/hibernate.cfg.xml");
             cfg.addResource("../conf/Parade.hbm.xml");
             cfg.addResource("../conf/Row.hbm.xml");
+            cfg.addResource("../conf/ManagerData.hbm.xml");
+            cfg.addResource("../conf/ManagerDataHierarchy.hbm.xml");
+            cfg.addResource("../conf/File.hbm.xml");
+            cfg.addResource("../conf/FileHierarchy.hbm.xml");
+            
+            
+            
+            
             
             setSessionFactory(cfg.buildSessionFactory());
             

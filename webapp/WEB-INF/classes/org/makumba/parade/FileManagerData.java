@@ -1,8 +1,8 @@
 package org.makumba.parade;
 
-public class FileManager {
+public class FileManagerData extends ManagerData {
 
-	public Long id;
+	private Long id;
 
 	public Long getId() {
 		return id;
@@ -11,5 +11,4 @@ public class FileManager {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
 }

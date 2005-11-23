@@ -5,20 +5,22 @@
 <hibernate-mapping
 	package="org.makumba.parade">
 	
-	<class name="FileSystemManager" table="FILESYSTEMMGR">
-    <id name="id" type="long" column="FILESYSTEMMGR_ID">
+	 
+	<class name="FileSystemManager" table="FILESYSTEMMGRDATA">
+    <id name="id" type="long" column="FILESYSTEMMGRDATA_ID">
         <generator class="native"/>
     </id>
     </class>
     
-    <class name="CvsManager" table="CVSMGR">
-    <id name="id" type="long" column="CVSMGR_ID">
+    <!--
+    <class name="CvsManager" table="CVSMGRDATA">
+    <id name="id" type="long" column="CVSMGRDATA_ID">
         <generator class="native"/>
     </id>
     </class>
-    
-    <class name="TrackerManager" table="TRACKERMGR">
-    <id name="id" type="long" column="TRACKERMGR_ID">
+     -->
+    <class name="TrackerManager" table="TRACKERMGRDATA">
+    <id name="id" type="long" column="TRACKERMGRDATA_ID">
         <generator class="native"/>
     </id>
     </class>

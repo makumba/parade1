@@ -96,10 +96,6 @@ public class Root {
             cfg.addResource("../conf/FileHierarchy.hbm.xml");
             cfg.addResource("../conf/FileDataHierarchy.hbm.xml");
             
-            
-            
-            
-            
             setSessionFactory(cfg.buildSessionFactory());
             
             // making hibernate creating the tables

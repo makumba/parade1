@@ -5,31 +5,39 @@
 <hibernate-mapping
 	package="org.makumba.parade">
 	
-	<class name="CvsManager" table="CVSMGRDATA">
+	<class name="CvsManagerData" table="CVSMGRDATA">
     <id name="id" type="long" column="CVSMGRDATA_ID">
         <generator class="native"/>
     </id>
     </class>
     
-    <class name="FileManager" table="FILEMGRDATA">
+    <class name="FileManagerData" table="FILEMGRDATA">
     <id name="id" type="long" column="FILEMGRDATA_ID">
         <generator class="native"/>
     </id>
     </class>
     
-    <class name="MakumbaManager" table="MAKUMBAMGRDATA">
+    <class name="MakumbaManagerData" table="MAKUMBAMGRDATA">
     <id name="id" type="long" column="MAKUMBAMGRDATA_ID">
         <generator class="native"/>
     </id>
     </class>
     
-    <class name="RowStoreManager" table="ROWSTOREMGRDATA">
+    <class name="RowStoreManagerData" table="ROWSTOREMGRDATA">
     <id name="id" type="long" column="ROWSTOREMGRDATA_ID">
         <generator class="native"/>
     </id>
+    
+    <map name="rowstore" table="ROWSTOREMGRDATA_ROWSTORE" order-by="name asc">
+	    <key column="id"/>
+	    <index column="name" type="string"/>
+	    <element column="rows" type="java.util.HashMap"/>
+	    
+	</map>
+	
     </class>
     
-    <class name="WebAppManager" table="WEBAPPMGRDATA">
+    <class name="WebAppManagerData" table="WEBAPPMGRDATA">
     <id name="id" type="long" column="WEBAPPMGRDATA_ID">
         <generator class="native"/>
     </id>

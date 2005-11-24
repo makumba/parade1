@@ -1,8 +1,12 @@
 package org.makumba.parade;
 
-public class ManagerData {
+import java.util.Map;
+
+public class ManagerData extends Manager {
 	
-	public Long id;
+	private Long id;
+	
+	private Map common;
 
 	public Long getId() {
 		return id;
@@ -11,9 +15,13 @@ public class ManagerData {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	public void display() {
-		// some general code about how to display info...
+
+	public Map getCommon() {
+		return common;
+	}
+
+	public void setCommon(Map common) {
+		this.common = common;
 	}
 
 }

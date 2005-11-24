@@ -19,7 +19,9 @@ public class InitServlet extends HttpServlet {
     
         public void init() throws ServletException
         {
-            System.out.println("INFO: Launching ParaDe...");
+        	System.out.println("init: Starting Parade initialization at "
+                    + new java.util.Date());
+            System.out.flush();
         	super.init();
             
         	 
@@ -34,7 +36,7 @@ public class InitServlet extends HttpServlet {
         	
         	try {
             	Root root = Root.getInstance();
-                root.init();
+                root.initRoot();
                 
             } catch(Throwable t) {
             	logger.error(t); t.printStackTrace();

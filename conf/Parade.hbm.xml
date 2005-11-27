@@ -3,7 +3,7 @@
       "-//Hibernate/Hibernate Mapping DTD//EN"
       "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping
-	package="org.makumba.parade">
+	package="org.makumba.parade.model">
     <class name="Parade" table="PARADE">
     	<cache usage="read-write" />
         <id column="ID" name="id" access="field"> <generator class="native"/></id>

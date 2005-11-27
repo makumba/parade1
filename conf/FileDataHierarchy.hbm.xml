@@ -3,10 +3,10 @@
       "-//Hibernate/Hibernate Mapping DTD//EN"
       "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping
-	package="org.makumba.parade">
+	package="org.makumba.parade.model">
 	
 	 
-	<class name="FileSystemManager" table="FILESYSTEMMGRDATA">
+	<class name="FileSystemManagerData" table="FILESYSTEMMGRDATA">
     <id name="id" type="long" column="FILESYSTEMMGRDATA_ID">
         <generator class="native"/>
     </id>
@@ -19,7 +19,7 @@
     </id>
     </class>
      -->
-    <class name="TrackerManager" table="TRACKERMGRDATA">
+    <class name="TrackerManagerData" table="TRACKERMGRDATA">
     <id name="id" type="long" column="TRACKERMGRDATA_ID">
         <generator class="native"/>
     </id>

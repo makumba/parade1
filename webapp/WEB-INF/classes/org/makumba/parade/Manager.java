@@ -1,15 +1,18 @@
 package org.makumba.parade;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.jsp.PageContext;
 
 import org.apache.log4j.Logger;
+import org.makumba.parade.model.ManagerData;
+import org.makumba.parade.model.RowStoreManagerData;
 
 public class Manager implements ManagerIfc {
 	
-	private static Logger logger = Logger.getLogger(Root.class.getName());
+	private static Logger logger = Logger.getLogger(Manager.class.getName());
     
 	public Long id;
 	
@@ -18,14 +21,14 @@ public class Manager implements ManagerIfc {
 	
 	// managers
 	
-	private RowStoreManager rowStoreManager;
+	private static RowStoreManager rowStoreManager;
 	
 	
 	
 	/* Does the initialization */
 	public void init() {
 		
-		data = (ManagerData) Root.getManagerData("org.makumba.parade.ManagerData", ManagerData.class);
+		data = (ManagerData) Root.getManagerData("org.makumba.parade.model.ManagerData", ManagerData.class);
 		
 		if(data.getCommon() == null) {
     		logger.warn("No common manager data found");
@@ -48,7 +51,7 @@ public class Manager implements ManagerIfc {
 	 */
 	public void initManagers() {
 		
-		this.rowStoreManager.init(getCommon());
+		rowStoreManager.init(getCommon());
 		
 	}
 	
@@ -59,9 +62,32 @@ public class Manager implements ManagerIfc {
 	
 	private void createManagers() {
 		
-		this.rowStoreManager = new RowStoreManager();
+		rowStoreManager = new RowStoreManager();
 		
 	}
+	
+	/* Displays row data
+	 * 
+	 */
+	
+	public static String view() {
+		String view="<table><tr>";
+		Map rows = ((RowStoreManagerData) Root.getManagerData("org.makumba.parade.model.RowStoreManagerData", RowStoreManagerData.class)).getRowstore();
+    	
+		Iterator i = rows.keySet().iterator();
+		while(i.hasNext()) {
+			//views from all the concerned managers
+			view += "<td>"+rowStoreManager.view((String)rows.get(i.next()))+"</td>";
+			
+			view+="</tr><tr>";
+		}
+		view+="</tr></table>";
+		
+		logger.warn(view);
+		return view;
+	}
+	
+	
 	
 	public Map getCommon() {
 		return this.data.getCommon();

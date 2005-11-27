@@ -2,6 +2,9 @@ package org.makumba.parade;
 
 import java.util.Map;
 
+import org.makumba.parade.Manager;
+import org.makumba.parade.RowProperties;
+
 public class RowStoreManagerData extends Manager {
 
 	private Long id = new Long(1);

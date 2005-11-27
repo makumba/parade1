@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import org.makumba.parade.model.ManagerData;
 import org.makumba.parade.tools.ForeignHttpAuthorizer;
 
 public class TomcatManager extends ManagerData implements ServletContainer {

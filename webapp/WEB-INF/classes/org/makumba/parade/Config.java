@@ -80,6 +80,8 @@ public class Config {
     public static Map readDomainData(String domain, PageContext pc)
             throws ParadeException {
         Map data = new HashMap();
+        
+        
         invokeOperation(data, domain,
                 "read" + Character.toUpperCase(domain.charAt(0))
                         + domain.substring(1), pc);
@@ -129,6 +131,7 @@ public class Config {
         if (ops.length != 1)
             throw new ParadeException("multiple operations not permitted");
 
+        /*
         // compute the data for the operation
         Map data = readDomainData(domain, pc);
         Map originalData = data;
@@ -166,6 +169,7 @@ public class Config {
                 separator = "<br>";
             }
         }
+        */
         return responseText;
     }
 

@@ -4,8 +4,10 @@ import java.io.File;
 import java.util.Iterator;
 
 import org.hibernate.SessionFactory;
+import org.makumba.parade.model.Parade;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 public class RootSpring extends HibernateDaoSupport {
@@ -17,6 +19,8 @@ public class RootSpring extends HibernateDaoSupport {
 	private SessionFactory sessionFactory;
 
 	public void init()  {
+		
+		HibernateTemplate ht = new HibernateTemplate();
 
 		System.out.println("INFO: Session ...");
 		//Parade parade = (Parade) ctx.getBean("RootDAO");

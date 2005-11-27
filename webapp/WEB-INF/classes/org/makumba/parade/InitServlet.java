@@ -17,8 +17,10 @@ public class InitServlet extends HttpServlet {
 	
     ServletContext context;
     
-        public void init() throws ServletException
+        public void init(ServletConfig conf) throws ServletException
         {
+        	context = conf.getServletContext();
+        	
         	System.out.println("init: Starting Parade initialization at "
                     + new java.util.Date());
             System.out.flush();

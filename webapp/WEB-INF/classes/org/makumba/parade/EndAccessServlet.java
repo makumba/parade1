@@ -24,7 +24,8 @@ public class EndAccessServlet extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse resp) {
         final ServletRequest req1 = req;
         final ServletResponse resp1 = resp;
-
+        
+        /*
         try {
             Config.invokeOperation("access", "accessMade",
                     new PageContextDummy() {
@@ -40,8 +41,10 @@ public class EndAccessServlet extends HttpServlet {
                             return context;
                         }
                     });
+                    
         } catch (ParadeException e) {
             throw new RuntimeException("got parade exception " + e);
         }
+        */
     }
 }

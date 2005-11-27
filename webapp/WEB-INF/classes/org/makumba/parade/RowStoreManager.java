@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-
+import org.makumba.parade.model.RowStoreManagerData;
 
 
 public class RowStoreManager {
@@ -18,18 +18,17 @@ public class RowStoreManager {
 		    
     public void init(Map common) {
     	
-    	data = (RowStoreManagerData) Root.getManagerData("org.makumba.parade.RowStoreManagerData", RowStoreManagerData.class);
+    	data = (RowStoreManagerData) Root.getManagerData("org.makumba.parade.model.RowStoreManagerData", RowStoreManagerData.class);
     	readRowDefinitions(common);
     }
     
-    /* Read row definitions, stores them in rowstore and puts it in the common map */
+    /* Read row definitions and stores them in rowstore */
     private void readRowDefinitions(Map common) {
     	
-    	data.setRowstore(data.getRowDefs().getRowDefinitions());
+    	data.setRowstore((new RowProperties()).getRowDefinitions());
     	
     	if(data.getRowstore().isEmpty()) {
-    		logger.warn("No row definitions found in database, refreshing from RowProperties");
-    		data.setRowstore((new RowProperties()).getRowDefinitions());
+    		logger.warn("No row definitions found, check RowProperties");
     	}
         
     	// we "convert" the path String to a real path
@@ -45,16 +44,21 @@ public class RowStoreManager {
             }
     	}
     	
-    	// we put rowstore in the common Map
+    	/* we put rowstore in the common Map
     	
     	common.putAll(data.getRowstore());
     	
     	Root.setManagerData((ManagerIfc)data);
     	
+    	*/
     	
     }
-
-
+    
+    public String view(String rowname) {
+    	Map row = (Map) data.getRowstore().get(rowname);
+    	return ((String) row.get("name")+" "+((File)row.get("path")).getPath());
+    }
+    
     /*
     public synchronized void addParadeRow(java.util.Map data,
             javax.servlet.jsp.PageContext pc) throws ParadeException {

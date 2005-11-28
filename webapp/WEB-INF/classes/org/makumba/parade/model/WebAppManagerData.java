@@ -1,6 +1,6 @@
 package org.makumba.parade.model;
 
-public class WebAppManagerData {
+public class WebAppManagerData extends ManagerData {
 
 	private Long id;
 

@@ -1,6 +1,6 @@
 package org.makumba.parade.model;
 
-public class FileData {
+public class FileData extends File {
 	
 	public Long id;
 

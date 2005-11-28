@@ -3,7 +3,7 @@ package org.makumba.parade.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Parade {
+public class ParadeData {
 	
 	private Map rows = new HashMap();
 			
@@ -17,7 +17,7 @@ public class Parade {
 		this.id = id;
 	}
 	
-	public Parade() {
+	public ParadeData() {
 		
 	}
 

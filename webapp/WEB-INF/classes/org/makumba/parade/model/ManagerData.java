@@ -1,5 +1,6 @@
 package org.makumba.parade.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.makumba.parade.Manager;

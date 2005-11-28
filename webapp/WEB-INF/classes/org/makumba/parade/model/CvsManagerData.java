@@ -1,8 +1,6 @@
 package org.makumba.parade.model;
 
-import org.makumba.parade.Manager;
-
-public class CvsManagerData extends Manager {
+public class CvsManagerData extends ManagerData {
 
 	private Long id;
 

@@ -1,10 +1,6 @@
 package org.makumba.parade.model;
 
-import java.util.Map;
-
-import org.makumba.parade.Manager;
-
-public class MakumbaManagerData extends Manager {
+public class MakumbaManagerData extends ManagerData {
 	
 	private Long id;
 

@@ -1,8 +1,6 @@
 package org.makumba.parade.model;
 
-import org.makumba.parade.Manager;
-
-public class FileManagerData extends Manager {
+public class FileManagerData extends ManagerData {
 
 	private Long id;
 

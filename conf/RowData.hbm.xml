@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+      "-//Hibernate/Hibernate Mapping DTD//EN"
+      "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+	package="org.makumba.parade.model">
+    <class name="RowData" table="ROWDATA">
+    	<cache usage="read-write" />
+        <id column="ROW_ID" name="id" access="field" unsaved-value="undefined"> <generator class="native"/></id>
+        
+        <property name="rowname"/>
+        <property name="rowpath"/>
+        <property name="description"/>
+        
+        <one-to-one name="managerdata" class="ManagerData" outer-join="true" cascade="all" access="field"/>
+        
+        <!-- 
+         <map name="managers" outer-join="true" cascade="all" inverse="true" access="field" order-by="managername">
+		    <cache usage="read-write" />
+			<key><column name="MGR_ID" not-null="false"/></key>
+			<index column="managername" type="string"/>
+			<one-to-many class="ManagerData"/>
+		</map>
+		 -->
+        
+         <map name="files" outer-join="true" cascade="all" inverse="true" access="field" order-by="path">
+		    <cache usage="read-write" />
+			<key><column name="FILE_ID" not-null="false"/></key>
+			<index column="path" type="string"/>
+			<one-to-many class="File"/>
+		</map>
+		
+				
+	</class>	
+</hibernate-mapping>
+
+ 

@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import javax.servlet.jsp.PageContext;
-
 import org.apache.log4j.Logger;
 import org.makumba.parade.model.ManagerData;
 import org.makumba.parade.model.RowStoreManagerData;
@@ -20,38 +18,46 @@ public class Manager implements ManagerIfc {
 	
 	
 	// managers
-	
 	private static RowStoreManager rowStoreManager;
-	
+	private static FileManager fileManager;
 	
 	
 	/* Does the initialization */
 	public void init() {
 		
-		data = (ManagerData) Root.getManagerData("org.makumba.parade.model.ManagerData", ManagerData.class);
+		data = Root.getManager();
 		
 		if(data.getCommon() == null) {
     		logger.warn("No common manager data found");
     		data.setCommon(new HashMap());
+    		Root.setManagerData(data);
     	}
 		
-		Root.setManagerData((ManagerIfc)data);
-    	
-		
 		createManagers();
-		initManagers();
+		readManagers();
+	}
+	
+	/* Read initialization data for managers which need it */
+	public void readManagers() {
+		rowStoreManager.read(getCommon());
 	}
 	
 	
 	/* Initialize the managers
 	 * goes through all the plugged managers and calls their init() method
-	 * This will populate the commonManagerData map
-	 * 
+	 *
 	 * TODO: do this with Spring
 	 */
 	public void initManagers() {
-		
 		rowStoreManager.init(getCommon());
+		fileManager.init(getCommon());
+		
+	}
+	
+	/* Initializes the given row with all the managers */
+	public void initManagersOnRow(Map row) {
+		fileManager.initRow(row,getCommon());
+		
 		
 	}
 	
@@ -63,7 +69,7 @@ public class Manager implements ManagerIfc {
 	private void createManagers() {
 		
 		rowStoreManager = new RowStoreManager();
-		
+		fileManager = new FileManager();
 	}
 	
 	/* Displays row data

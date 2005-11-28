@@ -1,10 +1,12 @@
 package org.makumba.parade;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.makumba.parade.model.RowData;
 import org.makumba.parade.model.RowStoreManagerData;
 
 
@@ -16,42 +18,69 @@ public class RowStoreManager {
 	
 	private RowStoreManagerData data;
 		    
-    public void init(Map common) {
-    	
+    
+	public void read(Map common) {
     	data = (RowStoreManagerData) Root.getManagerData("org.makumba.parade.model.RowStoreManagerData", RowStoreManagerData.class);
     	readRowDefinitions(common);
     }
+	
+	
+	public void init(Map common) {
+    	
+    }
     
-    /* Read row definitions and stores them in rowstore */
+    /* Read row definitions, stores them in rowstore and create rows in ParadeData */
     private void readRowDefinitions(Map common) {
     	
-    	data.setRowstore((new RowProperties()).getRowDefinitions());
     	
-    	if(data.getRowstore().isEmpty()) {
-    		logger.warn("No row definitions found, check RowProperties");
-    	}
+    	Map rowstore = (new RowProperties()).getRowDefinitions();
+    	Map stored_rowstore = data.getRowstore();
+    	
+    	/* TODO: Comparing the maps to see if there's a need to update */
+    	
         
-    	// we "convert" the path String to a real path
-    	Iterator i = data.getRowstore().keySet().iterator();
-    	while(i.hasNext()) {
-    		String name = (String) i.next();
-    		Map row = (Map) data.getRowstore().get(name);
-    		
-    		try {
-                row.put("path", new File(((String) row.get("path")).trim()).getCanonicalPath());
-            } catch (Throwable t) {
-            	logger.error(t); t.printStackTrace();
-            }
-    	}
+        if(true) {
+        	Map rows = new HashMap();
+        	if(rowstore.isEmpty()) {
+        		logger.warn("No row definitions found, check RowProperties");
+        	} else {
+        	
+    	    	Iterator i = rowstore.keySet().iterator();
+    	    	int j =0;
+    	    	while(i.hasNext()) {
+    	    		Map row = (Map) rowstore.get((String) i.next());
+    	    		
+    	    		/* TODO in FileManager
+    	    		try {
+    	                row.put("path", new File(((String) row.get("path")).trim()).getCanonicalPath());
+    	            } catch (Throwable t) {
+    	            	logger.error(t); t.printStackTrace();
+    	            }
+    	            */
+    	            
+    	            // creating RowData objects and passing the information
+    	            RowData rd = new RowData();
+    	            rd.setId(new Long(++j));
+    	            rd.setRowname((String)row.get("name"));
+    	            rd.setRowpath((String) row.get("path"));
+    	            rd.setDescription((String)row.get("desc"));
+    	            
+    	            rows.put((String)row.get("name"),rd);
+    		    }
+    	    	
+    	    	data.setRowstore(rowstore);
+    	    	Root.setManagerData(data);
+    	    	
+    	    	/* set Parade's rows
+    	    	 * TODO: compare first the changes
+    	    	 */
+    	    	Root.setParadeRows(rows);
+    	    	
+        	}
+        }
     	
-    	/* we put rowstore in the common Map
     	
-    	common.putAll(data.getRowstore());
-    	
-    	Root.setManagerData((ManagerIfc)data);
-    	
-    	*/
-    	
+    
     }
     
     public String view(String rowname) {

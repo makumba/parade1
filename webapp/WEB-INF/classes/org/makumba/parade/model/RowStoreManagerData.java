@@ -1,15 +1,15 @@
 package org.makumba.parade.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import org.makumba.parade.Manager;
 import org.makumba.parade.RowProperties;
 
-public class RowStoreManagerData extends Manager {
+public class RowStoreManagerData extends ManagerData {
 
 	private Long id = new Long(1);
 	
-	private Map rowstore;
+	private Map rowstore = new HashMap();
 	
 	private RowProperties rowDefs = new RowProperties();
 	

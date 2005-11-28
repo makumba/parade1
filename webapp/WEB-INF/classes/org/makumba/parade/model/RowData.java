@@ -14,7 +14,9 @@ public class RowData {
 	
 	public String description;
 	
-	private Map managers = new HashMap();
+	//private Map managers = new HashMap();
+	
+	private ManagerData managerdata;
 	
 	private Map files = new HashMap();
 
@@ -38,6 +40,7 @@ public class RowData {
 		this.rowname = rowname;
 	}
 	
+	/*
 	public Map getManagers() {
 		return managers;
 	}
@@ -45,6 +48,7 @@ public class RowData {
 	public void setManagers(Map managers) {
 		this.managers = managers;
 	}
+	*/
 
 	public Map getFiles() {
 		return files;
@@ -68,6 +72,14 @@ public class RowData {
 
 	public void setRowpath(String rowpath) {
 		this.rowpath = rowpath;
+	}
+
+	public ManagerData getManagerdata() {
+		return managerdata;
+	}
+
+	public void setManagerdata(ManagerData managerdata) {
+		this.managerdata = managerdata;
 	}
 
 }

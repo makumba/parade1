@@ -61,40 +61,28 @@ public class Root {
     	
     }
 	
-	private static void createPersistentManager(String className, Class type) {
-		
-		Transaction tx = session.beginTransaction();
-		
-		Iterator i = session.createQuery("FROM "+className+" c").iterate();
-		if (!i.hasNext()) {
-			
-			try {
-				
-				Object o = Class.forName(className).asSubclass(Manager.class).newInstance();
-				Manager c = (Manager) o;
-				
-				c.setId(new Long(1));
-				session.saveOrUpdate(c);
-			} catch (Throwable t) {
-				logger.error(t); t.printStackTrace();
-			}
-			tx.commit();
-			
-        }
-	}
 	
 	public static ManagerIfc getManagerData(String className, Class type) {
-		
-		createPersistentManager(className,type);
 		
 		Transaction tx = session.beginTransaction();
 		
 		ManagerIfc data = (ManagerIfc) session.get(className, new Long(1));
 		if (data == null) {
-            logger.error("Cannot get manager data");
+			try {
+				Object o = Class.forName(className).asSubclass(Manager.class).newInstance();
+				data = (Manager) o;
+				
+				data.setId(new Long(1));
+				session.save(data,new Long(1));
+				
+			} catch (Throwable t) {
+				logger.error("Cannot create persistend manager");
+				logger.error(t); t.printStackTrace();
+			}
+			tx.commit();
+			
+			
 		}
-		
-		tx.commit();
 		
 		return data;
 	}
@@ -102,7 +90,7 @@ public class Root {
 	public static void setManagerData(ManagerIfc data) {
 		Transaction tx = session.beginTransaction();
 		
-		session.saveOrUpdate(data);
+		session.merge(data);
 		
 		tx.commit();
 	}
@@ -110,100 +98,100 @@ public class Root {
 	public static ManagerData getManager() {
 		Transaction tx = session.beginTransaction();
 		
-		Iterator i = session.createQuery("FROM ManagerData m").iterate();
+		m = (ManagerData) session.get(ManagerData.class,new Long(1));
 		
-		if (!i.hasNext()) {
+		if (m == null) {
 			
 			try {
 				m = new ManagerData();
 				m.setId(new Long(1));
-				session.saveOrUpdate(m);
+				session.save(m,new Long(1));
 			} catch (Throwable t) {
 				logger.error(t); t.printStackTrace();
 			}
 			tx.commit();
-		} else {
-			m = (ManagerData) i.next();
-		}
 			
+		} 
 			return m;
 	}
 	
-	public static void setManagerData(ManagerData m) {
+	public static void setManagerDataData (ManagerData m) {
 		Transaction tx = session.beginTransaction();
 		
 		m.setCommon(m.getCommon());
 		
-		session.saveOrUpdate(m);
+		session.merge(m);
 		
 		tx.commit();
 	}
 	
 	public static void getParadeData() {
 		Transaction tx = session.beginTransaction();
-
-        try {     	
-       	
-        	Iterator i = session.createQuery("FROM ParadeData p").iterate();
-            
-            if (!i.hasNext()) {
-                p = new ParadeData();
-                p.setId(one);
-                session.saveOrUpdate(p);
-                tx.commit();
-            } else {
-            	p = (ParadeData) i.next();
-            }
-            
-        } catch (Throwable t) {
-            logger.error(t); t.printStackTrace();
-        }
-        
+		
+		p = (ParadeData) session.get(ParadeData.class, new Long(1));
+		
+		if (p == null) {
+			
+			try {     	
+	        	p = new ParadeData();
+	        	p.setId(one);
+	        	session.save(p,new Long(1));
+	        	tx.commit();
+	        	
+	        } catch (Throwable t) {
+	            logger.error(t); t.printStackTrace();
+	        }
+		}
 	}
 	
 	public static void setParadeData(ParadeData data) {
 		Transaction tx = session.beginTransaction();
 		
 		p.setRows(data.getRows());
-		
-		session.saveOrUpdate(p);
+		session.merge(p);
 		
 		tx.commit();
+		
 	}
 	
-	/* Return Parade rows
-	 * TODO: implement it
-	 */
+	/* Return Parade rows */
 	public static Map getParadeRows() {
-		return null;
+		Transaction tx = session.beginTransaction();
+		
+		Map rows = p.getRows();
+		tx.commit();
+		
+		return rows;
 	}
 	
 	/* Set Parade rows */
 	public static void setParadeRows(Map rows) {
 		Transaction tx = session.beginTransaction();
 		
+		//p = (ParadeData) session.get(ParadeData.class,new Long(1));
 		p.setRows(rows);
-		
-		session.saveOrUpdate(p);
+		session.merge(p);
 		
 		tx.commit();
+
 		
 	}
 	
+	/* Returns data of one row
+	 * TODO: make it select the row
+	 */
 	public static void getRowData() {
 		Transaction tx = session.beginTransaction();
 
         try {     	
        	
-        	Iterator i = session.createQuery("FROM RowData r").iterate();
+        	r = (RowData) session.get(RowData.class, new Long(1));
             
-            if (!i.hasNext()) {
+            if (r == null) {
                 r = new RowData();
                 r.setId(one);
-                session.saveOrUpdate(r);
+                session.save(r,new Long(1));
                 tx.commit();
-            } else {
-            	r = (RowData) i.next();
             }
             
         } catch (Throwable t) {
@@ -211,14 +199,18 @@ public class Root {
         }
 	}
 	
+	/* Sets the data of one Row
+	 * TODO: make it select the row
+	 */
 	public static void setRowData(RowData data) {
 		Transaction tx = session.beginTransaction();
 		
 		//do something useful
 		
-		session.saveOrUpdate(p);
+		session.save(r,new Long(1));
 		
 		tx.commit();
+
 	}
 	
 	

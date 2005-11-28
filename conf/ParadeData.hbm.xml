@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+      "-//Hibernate/Hibernate Mapping DTD//EN"
+      "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+	package="org.makumba.parade.model">
+    <class name="ParadeData" table="PARADEDATA">
+    	<cache usage="read-write" />
+        <id column="ID" name="id" access="field"> <generator class="native"/></id>
+        
+        <map name="rows" outer-join="true" cascade="all" inverse="true" access="field" order-by="rowname">
+		    <cache usage="read-write" />
+			<key><column name="ROW_ID" not-null="false"/></key>
+			<index column="rowname" type="string"/>
+			<one-to-many class="RowData" />
+		</map>
+		
+				
+	</class>	
+</hibernate-mapping>
+
+ 

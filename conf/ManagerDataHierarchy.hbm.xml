@@ -28,7 +28,7 @@
         <generator class="native"/>
     </id>
     
-    <map name="rowstore" table="ROWSTOREMGRDATA_ROWSTORE" order-by="name asc">
+    <map name="rowstore" table="ROWSTOREMGRDATA_ROWSTORE" outer-join="true" cascade="all" inverse="true" access="field" order-by="name asc">
 	    <key column="id"/>
 	    <index column="name" type="string"/>
 	    <element column="rows" type="java.util.HashMap"/>

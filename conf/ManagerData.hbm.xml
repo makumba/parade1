@@ -6,9 +6,9 @@
 	package="org.makumba.parade.model">
 	
 	<class name="ManagerData" table="MANAGERDATA">
-    <id name="id" type="long" column="MANAGERDATA_ID"><generator class="native"/></id>
+    <id name="id" type="long" column="MGR_ID"><generator class="native"/></id>
        
-    <map name="common" table="MANAGERDATA_COMMON" order-by="name asc">
+    <map name="common" table="MANAGERDATA_COMMON" outer-join="true" cascade="all" inverse="true" access="field" order-by="name asc">
    	<key column="id"/>
    	<index column="name" type="string"/>
    	<element column="prop" type="java.util.HashMap"/>
